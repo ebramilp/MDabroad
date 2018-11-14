@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+    <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+
+    
+
+    <script>
+
+    
+
+        
+
+    var onSuccess = function(data) {
+
+        var consumer_phone = data.personalInfo.contactInfo[0].phone;
+
+        console.log ("Consumer Phone: " +  consumer_phone);
+
+        
+
+           var crm_url = "https://test.mdabroad.com/patient/searchByPhone?phone_number="; // set the URL of the CRM here
+
+           document.getElementById("crm_frame").src = crm_url + consumer_phone;
+
+           console.log ("set iframe URL");
+
+        
+
+            
+
+    };
+
+        
+
+    var onError = function(data) {
+
+       
+
+    };
+
+      
+
+    lpTag.agentSDK.init({});
+
+    function myfunction() {
+
+        lpTag.agentSDK.get('authenticatedData', onSuccess, onError);
+
+        console.log ("WA CRM widget init");
+
+    }
+
+    setTimeout(myfunction, 1000); 
+
+    </script>
+
+ 
+
+ 
+
+    <head> 
+
+    <body>
+
+      <iframe id="crm_frame" scrolling="yes" height="100%" width="100%" src=""></iframe>
+
+    </body>
+
+</html>
